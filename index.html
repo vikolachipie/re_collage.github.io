@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RE_COLLAGE_26</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-content">
+            <div class="logo" onclick="showSection('accueil')">RE_COLLAGE_26</div>
+            <div class="menu">
+                <a href="#" onclick="showSection('creer')">CRÉER</a>
+                <a href="#" onclick="showSection('archive')">ARCHIVE</a>
+                <a href="#" onclick="showSection('contact')">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="creer" class="content-section" style="display:none;">
+        <div class="sticker-toolbar">
+            <div class="tool-group">
+                <button class="tool-btn" onclick="toggleMenu('menu-shapes')">Formes</button>
+                <div id="menu-shapes" class="tool-dropdown">
+                    <button onclick="addShape('rect')">Carré</button>
+                    <button onclick="addShape('circle')">Cercle</button>
+                    <button onclick="addShape('triangle')">Triangle</button>
+                    <button onclick="addShape('star')">Étoile</button>
+                    <button onclick="addShape('heart')">Coeur</button>
+                </div>
+            </div>
+
+            <div class="tool-group">
+                <button class="tool-btn" onclick="toggleMenu('menu-text')">Texte</button>
+                <div id="menu-text" class="tool-dropdown">
+                    <input type="text" id="textInput" placeholder="Ton texte ici...">
+                    <select id="fontFamily" onchange="updateSelectedText()">
+                        <option value="Arial Black">Arial Black</option>
+                        <option value="Impact">Impact</option>
+                        <option value="Courier New">Courier</option>
+                    </select>
+                    <input type="number" id="fontSize" value="80" onchange="updateSelectedText()">
+                    <button onclick="updateLiveText()">Ajouter</button>
+                </div>
+            </div>
+
+            <div class="tool-group">
+                <button class="tool-btn" onclick="toggleMenu('menu-colors')">Couleur</button>
+                <div id="menu-colors" class="tool-dropdown color-grid">
+                    <button style="background:#000" onclick="setGlobalColor('#000')"></button>
+                    <button style="background:#ff6600" onclick="setGlobalColor('#ff6600')"></button>
+                    <button style="background:#fff; border:1px solid #000" onclick="setGlobalColor('#fff')"></button>
+                    <button style="background:#ff0000" onclick="setGlobalColor('#ff0000')"></button>
+                    <button style="background:#00ff00" onclick="setGlobalColor('#00ff00')"></button>
+                    <button style="background:#0000ff" onclick="setGlobalColor('#0000ff')"></button>
+                    <button class="full-btn" onclick="setBgColor()">Peindre le Fond</button>
+                </div>
+            </div>
+
+            <button class="tool-btn" onclick="clearAll()">Reset</button>
+            <button class="save-btn" onclick="downloadSticker()">TÉLÉCHARGER</button>
+        </div>
+
+        <div class="sticker-workspace">
+            <canvas id="stickerCanvas"></canvas>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
